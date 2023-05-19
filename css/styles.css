@@ -136,10 +136,27 @@ img {
 .menu-item{
     position: relative;
 }
-.menu-link {
-    display: block;
-    padding: 24px 0;
+.menu-link.current {
+    position: relative;
+    color: var(--pressed-state-color);
+}
 
+.menu-link.current::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    bottom: -1px;
+    left: 0;
+    background-color: var(--pressed-state-color);
+    border-radius: 2px;
+    opacity: 1;
+    transition: opacity var(--transition-dur-func);
+}
+
+.menu-link {
+    padding: 24px 0;
+    position: relative;
     font-weight: 500;
     font-size: 16px;
     line-height: 1.5;
@@ -152,21 +169,19 @@ img {
     position: absolute;
     width: 100%;
     height: 4px;
-    top: 64px;
+    bottom: -1px;
     left: 0;
-    background: var(--pressed-state-color);
+    background-color: var(--pressed-state-color);
     border-radius: 2px;
     opacity: 0;
     transition: opacity var(--transition-dur-func);
-    
 }
 .menu-link:hover::after{
     opacity: 1;
-}
+} 
 .menu-link:hover,
 .menu-link:focus {
-    color: var(--pressed-state-color);
-    
+    color: var(--pressed-state-color);  
 }
 .contact {
     font-style: normal;
@@ -324,6 +339,8 @@ img {
 .team-social-item {
     width:  40px;
     height: 40px;
+}   
+.team-social-link {
     transition: background-color var(--transition-dur-func);
 }
 .team-social-link:hover,
@@ -362,7 +379,7 @@ img {
     border: 1px solid var(--subtle-text-color);
     border-radius: 4px;
     color: var(--subtle-text-color);
-    transition: color var(--transition-dur-func), border-color var(--transition-dur-func);
+    transition: border-color var(--transition-dur-func), color var(--transition-dur-func);
 }
 .customers-link:hover,
 .customers-link:focus {
@@ -390,19 +407,18 @@ img {
 }
 .filter-btn {
     padding: 12px 24px;
-
     font-family: 'Roboto', sans-serif;
     background: var(--light-mode-color);
     border: 1px solid var(--accent-color);
     border-radius: 4px;
     color: var(--primary-brand-color);
-    transition: color var(--transition-dur-func), border var(--transition-dur-func), box-shadow var(--transition-dur-func), background-color var(--transition-dur-func);
+    transition: color var(--transition-dur-func), background-color var(--transition-dur-func), border-color var(--transition-dur-func), box-shadow var(--transition-dur-func);
 }
 
 .filter-btn:hover,
 .filter-btn:focus {
     color: var(--white-background-text-color);
-    border: 1px solid transparent;
+    border-color: 1px solid transparent;
     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
     background-color: var(--pressed-state-color);
 }
@@ -526,7 +542,7 @@ img {
 }
 .modal {
     width: 408px;
-    height: 576px;
+    min-height: 576px;
     background: var(--modal-background-color);
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
@@ -534,7 +550,7 @@ img {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
+    transition: transform var(--transition-dur-func);
 }
 .modal-close-btn {
     display: flex;
@@ -549,11 +565,24 @@ img {
     position: absolute;
     top: 24px;
     right: 24px;
+    cursor: pointer;
+    transition: background-color var(--transition-dur-func), border var(--transition-dur-func);
+}
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+    background-color: var(--pressed-state-color);
+    border: none;
 }
 .is-hidden {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 }
-    
+.modal-close-icon {
+    transition: fill var(--transition-dur-func);
+}
+.modal-close-icon:hover,
+.modal-close-icon:focus {
+    fill: #FFFFFF;
+}
     
