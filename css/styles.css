@@ -572,6 +572,7 @@ img {
 .modal-close-btn:focus {
     background-color: var(--pressed-state-color);
     border: none;
+    /* fill: #FFFFFF; */
 }
 .is-hidden {
     opacity: 0;
@@ -581,8 +582,9 @@ img {
 .modal-close-icon {
     transition: fill var(--transition-dur-func);
 }
-.modal-close-icon:hover,
-.modal-close-icon:focus {
+
+.modal-close-btn:hover .modal-close-icon,
+.modal-close-btn:focus .modal-close-icon{
     fill: #FFFFFF;
 }
     
